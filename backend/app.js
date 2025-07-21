@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5173'],
+  credentials: true
+}));
 
 // Auth routes (login/signup)
 app.use('/api/v1', require('./routes/auth'));
